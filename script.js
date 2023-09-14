@@ -2,8 +2,10 @@ const elBody = document.querySelector("body");
 const elPokeImage = document.getElementsByClassName("pokemon-img-dark")[0];
 const elInput = document.querySelector("#text-poke");
 const elButton = document.querySelector("#button-poke");
+const accepts = document.querySelector(".current-accepts");
 
 let pokemonName = "";
+let sumOfHits = 0;
 
 handleStart();
 
@@ -38,26 +40,43 @@ async function getPokeData() {
 }
 
 const form = document.querySelector("form");
-form.addEventListener("submit", (eve) => {
-  eve.preventDefault();
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 });
 
 const sendButton = document.querySelector("#button-poke");
 sendButton.addEventListener("click", () => {
-  if (elButton.textContent === "Reiniciar") {
+  /// Caso o usuário queira continuar jogando
+  if (elButton.textContent !== "Enviar") {
     handleStart();
     return;
   }
 
-  const userReponse = elInput.value;
+  /// Caso o usuário esteja enviando um palpite:
 
-  if (userReponse !== pokemonName) {
+  const userReponse = document.querySelector("#text-poke").value;
+
+  // ações em comum
+  elPokeImage.style.filter = "brightness(100%)";
+  elInput.disabled = true;
+
+  // caso o usuário tenha acertado o palpite
+  if (userReponse === pokemonName) {
     elBody.style.backgroundColor = "var(--green)";
-    elPokeImage.style.filter = "none";
+    elButton.textContent = "Próximo";
     elInput.value = `${
       pokemonName[0].toUpperCase() + pokemonName.substring(1)
     }!! Você acertou, Parabéns!!`;
-    elInput.disabled = true;
+    sumOfHits = Number(sumOfHits) + 1;
+    accepts.textContent = `Acertos atuais: ${sumOfHits}`;
+  } else {
+    // caso o usuário não tenha acertado o palpite
+    elBody.style.backgroundColor = "var(--red)";
     elButton.textContent = "Reiniciar";
+    elInput.value = `${
+      pokemonName[0].toUpperCase() + pokemonName.substring(1)
+    }! Não foi dessa vez ;-;`;
+    sumOfHits = 0;
+    accepts.textContent = "Acertos atuais: 0";
   }
 });
