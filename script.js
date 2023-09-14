@@ -4,6 +4,7 @@ const elInput = document.querySelector("#text-poke");
 const elButton = document.querySelector("#button-poke");
 const elHits = document.querySelector(".current-hits");
 const elRecord = document.querySelector(".record-hits");
+const pokeTypes = document.querySelector('.tip-poke > h4');
 
 let pokemonName = "";
 let sumOfHits = 0;
@@ -24,9 +25,12 @@ handleStart();
 async function handleStart() {
   resetFields();
 
-  const { image, name } = await getPokeData();
+  const { image, name, types } = await getPokeData();
   pokemonName = name;
   elPokeImage.src = image;
+  let typescontent = 'Tipo: ';
+  types.forEach(({type}) => typescontent += ` ${type.name}`);
+  pokeTypes.innerText = typescontent;
 }
 
 function resetFields() {
@@ -45,9 +49,11 @@ async function getPokeData() {
     `https://pokeapi.co/api/v2/pokemon/${randomPokeId}`
   ).then((res) => res.json());
 
+  console.log(pokeData)
   return {
     image: pokeData.sprites.front_default,
     name: pokeData.name,
+    types: pokeData.types
   };
 }
 
@@ -95,3 +101,6 @@ sendButton.addEventListener("click", () => {
     elHits.textContent = "Acertos atuais: 0";
   }
 });
+
+
+
