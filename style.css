@@ -46,11 +46,17 @@ body {
   font-weight: bold;
 }
 
-.circle_poke {
+.circle-poke {
   height: 15rem;
   width: 15rem;
   margin-top: 7rem;
   background-color: var(--blue);
   border-radius: 50%;
   border: 1.2rem solid #fff;
+}
+
+.circle-poke .pokemon-img-dark {
+  width: 100%;
+  filter: brightness(0);
+  transition: filter .5s ease-out;
 }
