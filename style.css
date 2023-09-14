@@ -120,6 +120,19 @@ body {
   font-weight: bold;
   font-size: 1.05rem;
   padding: 10px 1.5rem;
+  display: inline;
+}
+
+.inputs #restart-game{
+  background-color: var(--purple);
+  border: none;
+  cursor: pointer;
+  border-radius: 0 0.8rem 0.8rem 0;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.05rem;
+  padding: 10px 1.5rem;
+  display: none;
 }
 
 @media (max-width: 570px) {
