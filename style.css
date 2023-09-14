@@ -1,4 +1,5 @@
-:root { /*Variáveis de cores*/
+/*Variáveis de cores*/
+:root {
   --red: #eb3b5a;
   --light-red: #fc5c65;
   --blue: #45aaf2;
@@ -10,7 +11,8 @@
   --black: #303030;
 }
 
-* { /**/
+* {
+  /**/
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -22,7 +24,7 @@ body {
   font-family: sans-serif;
 }
 
-.container { 
+.container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -31,12 +33,13 @@ body {
   gap: 1.3rem;
 }
 
-.navigator { /*Camada de informação ao usuário*/
+/*Camada de informação ao usuário*/
+.navigator {
   display: flex;
   justify-content: center;
 }
 
-.navigator div { 
+.navigator div {
   background-color: #fff;
   padding: 1rem;
   margin-top: 1erm;
@@ -45,14 +48,16 @@ body {
   font-weight: bold;
 }
 
-.poke{ /*Div do círculo e da dica*/
+/*Div do círculo e da dica*/
+.poke {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.circle-poke { /*Círculo do personagem*/
+/*Círculo do personagem*/
+.circle-poke {
   height: 15rem;
   width: 15rem;
   margin-top: 7rem;
@@ -67,49 +72,48 @@ body {
   transition: filter .5s ease-out;
 }
 
-.tip_poke{ /*Dica do personagem*/
-  width: 12em;
-  height: 2em;
+/*Dica do personagem*/
+.tip-poke {
   margin-top: 2.5em;
   background-color: var(--blue);
-  border-radius: 0.8em;
-  
+  border-radius: 5rem;
+  padding: 3px 2rem;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.tip_poke h4{ /*Texto da dica do personagem*/
+/*Texto da dica do personagem*/
+.tip-poke h4 {
   color: #fff;
 }
 
-.inputs{ /*Div dos inputs*/
-  margin-top: 2.5em;
-  margin-bottom: 2.5em;
+/*Div dos inputs*/
+.inputs {
+  margin: 2.5rem 0;
 }
 
-#text_poke{ /*Input para a entrada dos nomes*/
-  width: 25em;
-  height: 2.5em;
+/*Input para a entrada dos nomes*/
+#text-poke {
+  width: 25rem;
   border: none;
-  border-radius: 0.8em;
-  padding: 0.3em;
+  border-radius: 0.8rem 0 0 0.8rem;
+  padding: 10px;
   color: #222;
   outline: none;
+  font-size: 1.05rem;
 }
 
-#text_poke::placeholder{
-  color: #222;
-  font-size: 1.05em;
-  font-weight: bold;
-}
-
-#btn_poke{ /*Button*/
+/*Button*/
+#button-poke {
   background-color: var(--blue);
-  height: 2.5em;
-  width: 5em;
+  max-width: 5rem;
   border: none;
-  border-radius: 0.8em;
+  cursor: pointer;
+  border-radius: 0 0.8rem 0.8rem 0;
   color: #fff;
   font-weight: bold;
+  font-size: 1.05rem;
+  padding: 10px;
 }
