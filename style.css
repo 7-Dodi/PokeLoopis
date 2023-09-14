@@ -6,13 +6,13 @@
   --yellow: #fed330;
   --green: #26de81;
   --purple: #a55eea;
+  --orange: #fd9644;
   --white: #d1d8e0;
   --grey: #4b6584;
   --black: #303030;
 }
 
 * {
-  /**/
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -41,11 +41,16 @@ body {
 
 .navigator div {
   background-color: #fff;
+  text-align: center;
   padding: 1rem;
   margin-top: 1erm;
   border-radius: 0 0 1rem 1rem;
   box-shadow: 2px 2px 10px #222;
   font-weight: bold;
+}
+
+.navigator .record {
+  color: #fd9644;
 }
 
 /*Div do círculo e da dica*/
@@ -91,11 +96,11 @@ body {
 
 /*Div dos inputs*/
 .inputs {
-  margin: 2.5rem 0;
+  margin: 2rem 0;
 }
 
 /*Input para a entrada dos nomes*/
-#text-poke {
+.inputs #text-poke {
   width: 25rem;
   border: none;
   border-radius: 0.8rem 0 0 0.8rem;
@@ -106,14 +111,31 @@ body {
 }
 
 /*Button*/
-#button-poke {
+.inputs #button-poke {
   background-color: var(--blue);
-  max-width: 5rem;
   border: none;
   cursor: pointer;
   border-radius: 0 0.8rem 0.8rem 0;
   color: #fff;
   font-weight: bold;
   font-size: 1.05rem;
-  padding: 10px;
+  padding: 10px 1.5rem;
+}
+
+@media (max-width: 570px) {
+  .inputs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .inputs #text-poke, .inputs #button-poke {
+    border-radius: 0.5rem;
+    width: 90%;
+  }
+
+  .inputs #button-poke {
+    margin-top: 1rem;
+  }
 }
