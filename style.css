@@ -1,4 +1,4 @@
-:root {
+:root { /*Variáveis de cores*/
   --red: #eb3b5a;
   --light-red: #fc5c65;
   --blue: #45aaf2;
@@ -10,10 +10,11 @@
   --black: #303030;
 }
 
-* {
+* { /**/
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -21,7 +22,7 @@ body {
   font-family: sans-serif;
 }
 
-.container {
+.container { 
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -30,14 +31,12 @@ body {
   gap: 1.3rem;
 }
 
-.container button {}
-
-.navigator {
+.navigator { /*Camada de informação ao usuário*/
   display: flex;
   justify-content: center;
 }
 
-.navigator div {
+.navigator div { 
   background-color: #fff;
   padding: 1rem;
   margin-top: 1erm;
@@ -46,7 +45,14 @@ body {
   font-weight: bold;
 }
 
-.circle-poke {
+.poke{ /*Div do círculo e da dica*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-poke { /*Círculo do personagem*/
   height: 15rem;
   width: 15rem;
   margin-top: 7rem;
@@ -59,4 +65,51 @@ body {
   width: 100%;
   filter: brightness(0);
   transition: filter .5s ease-out;
+}
+
+.tip_poke{ /*Dica do personagem*/
+  width: 12em;
+  height: 2em;
+  margin-top: 2.5em;
+  background-color: var(--blue);
+  border-radius: 0.8em;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tip_poke h4{ /*Texto da dica do personagem*/
+  color: #fff;
+}
+
+.inputs{ /*Div dos inputs*/
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
+
+#text_poke{ /*Input para a entrada dos nomes*/
+  width: 25em;
+  height: 2.5em;
+  border: none;
+  border-radius: 0.8em;
+  padding: 0.3em;
+  color: #222;
+  outline: none;
+}
+
+#text_poke::placeholder{
+  color: #222;
+  font-size: 1.05em;
+  font-weight: bold;
+}
+
+#btn_poke{ /*Button*/
+  background-color: var(--blue);
+  height: 2.5em;
+  width: 5em;
+  border: none;
+  border-radius: 0.8em;
+  color: #fff;
+  font-weight: bold;
 }

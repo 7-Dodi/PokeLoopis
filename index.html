@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet"> 
     <title>PokeLoopis</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -14,12 +17,19 @@
         </div>
     </div>
     <div class="container">
-      <div class="circle-poke">
-        <img class="pokemon-img-dark" src="" alt="">
+      <div class="poke">
+        <div class="circle-poke">
+            <img class="pokemon-img-dark" src="" alt="">
+        </div>
+        <div class="tip_poke">
+          <h4>Tipo: Água</h4>
+        </div>
       </div>
       <div class="inputs">
-        <input type="text" />
-        <button>Enviar</button>
+        <form>
+          <input id="text_poke" type="text" placeholder="Qual é esse o Pokémon?!">
+          <button id="btn_poke">Enviar</button>
+        </form>
       </div>
     </div>
 
