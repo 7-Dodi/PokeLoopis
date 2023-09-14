@@ -73,7 +73,7 @@ sendButton.addEventListener("click", () => {
   elInput.disabled = true;
 
   // caso o usuário tenha acertado o palpite
-  if (userReponse === pokemonName) {
+  if (userReponse.toLowerCase() === pokemonName) {
     elBody.style.backgroundColor = "var(--green)";
     elButton.textContent = "Próximo";
     elInput.value = `${
