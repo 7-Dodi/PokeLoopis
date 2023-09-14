@@ -2,10 +2,22 @@ const elBody = document.querySelector("body");
 const elPokeImage = document.getElementsByClassName("pokemon-img-dark")[0];
 const elInput = document.querySelector("#text-poke");
 const elButton = document.querySelector("#button-poke");
-const accepts = document.querySelector(".current-accepts");
+const elHits = document.querySelector(".current-hits");
+const elRecord = document.querySelector(".record-hits");
 
 let pokemonName = "";
 let sumOfHits = 0;
+function countCurrentHits() {
+  sumOfHits++;
+  elHits.textContent = `Acertos atuais: ${sumOfHits}`;
+}
+let recordOfHits = 0;
+function countMaximumHits() {
+  recordOfHits = Math.max(recordOfHits, sumOfHits);
+  elRecord.textContent = `🔥 Recordes de acertos: ${recordOfHits}`;
+}
+/////
+
 
 handleStart();
 
@@ -67,8 +79,8 @@ sendButton.addEventListener("click", () => {
     elInput.value = `${
       pokemonName[0].toUpperCase() + pokemonName.substring(1)
     }!! Você acertou, Parabéns!!`;
-    sumOfHits = Number(sumOfHits) + 1;
-    accepts.textContent = `Acertos atuais: ${sumOfHits}`;
+
+    countCurrentHits();
   } else {
     // caso o usuário não tenha acertado o palpite
     elBody.style.backgroundColor = "var(--red)";
@@ -76,7 +88,10 @@ sendButton.addEventListener("click", () => {
     elInput.value = `${
       pokemonName[0].toUpperCase() + pokemonName.substring(1)
     }! Não foi dessa vez ;-;`;
+
+    countMaximumHits();
+
     sumOfHits = 0;
-    accepts.textContent = "Acertos atuais: 0";
+    elHits.textContent = "Acertos atuais: 0";
   }
 });
