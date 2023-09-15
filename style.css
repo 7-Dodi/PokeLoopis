@@ -10,6 +10,17 @@
   --white: #d1d8e0;
   --grey: #4b6584;
   --black: #303030;
+  --brow: #6c3c0c;
+  --magenta: #6D214F;
+  --honey: #EAB543;
+  --naval: #40739e;
+  --rock: #353b48;
+  --steel: #718093;
+  --kepel: #58B19F;
+  --fairy: #cf6a87;
+  --ice: #3dc1d3;
+  --fly: #00b894;
+  --dark:#2d3436;
 }
 
 * {
@@ -45,7 +56,7 @@ body {
   padding: 1rem;
   margin-top: 1erm;
   border-radius: 0 0 1rem 1rem;
-  box-shadow: 2px 2px 10px #222;
+  box-shadow: 0px 0px 10px #222;
   font-weight: bold;
 }
 
@@ -69,7 +80,7 @@ body {
   background-color: var(--blue);
   border-radius: 50%;
   border: 1.2rem solid #fff;
-}
+} 
 
 .circle-poke .pokemon-img-dark {
   width: 100%;
