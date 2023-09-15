@@ -19,9 +19,12 @@ function countCurrentHits() {
 }
 let recordOfHits = 0;
 function countMaximumHits() {
-  recordOfHits = Math.max(recordOfHits, sumOfHits);
-  elRecord.textContent = `🔥 Recordes de acertos: ${recordOfHits}`;
-}//Falta adicionar o recorde no localStorage
+  //Atualiza primeiro localStorage
+  localStorage.setItem('record', Math.max(recordOfHits, sumOfHits));
+  //Atualiza o valor do records na mensagem
+  recordOfHits = localStorage.getItem('record');
+  elRecord.textContent = `🔥 Recordes de acertos: ${localStorage.getItem('record')}`;
+}
 /////
 
 
@@ -62,6 +65,7 @@ function resetFields() {
   elPokeImage.style.filter = "brightness(0)";
   elInput.disabled = false;
   elInput.value = "";
+  elRecord.textContent = ` 🔥 Recordes de acertos: ${localStorage.getItem('record') || 0}`;
 }
 
 async function getPokeData() {
