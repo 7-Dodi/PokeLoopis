@@ -37,7 +37,7 @@ function colorBackgroundTypes(name){
 
 handleStart();
 
-function  getPokeNameTraduction (typeName) {
+function  getPokeTypeTraduction (typeName) {
   const typeTranslation = typesPokemon.find(({name}) => name === typeName);
   return typeTranslation.tradution;
 }
@@ -50,7 +50,7 @@ async function handleStart() {
   elPokeImage.src = image;
   let typescontent = 'Tipo: ';
   //Seria legal se os nomes do tipos fossem apresentados em português
-  types.forEach(({type}) => typescontent += ` ${getPokeNameTraduction(type.name)}`);
+  types.forEach(({type}) => typescontent += ` ${getPokeTypeTraduction(type.name)}`);
   pokeTypes.innerText = typescontent;
   colorBackgroundTypes(types[0].type.name);
 }
@@ -124,16 +124,16 @@ sendButton.addEventListener("click", () => {
   }
 });
 
-let numberOfSkips = 0;
+let numberOfSkips = 3;
 const skipButton = document.querySelector('#skip-button');
 
 skipButton.addEventListener('click', (e) => {
-  numberOfSkips++;
-  if(numberOfSkips <= 3) {
+  numberOfSkips--;
+  if(numberOfSkips > 0) {
     handleStart();
     console.log(numberOfSkips)
   } 
-  if(numberOfSkips == 3) {
+  if(numberOfSkips == 0) {
     skipButton.style.display = 'none';
   }
 })
