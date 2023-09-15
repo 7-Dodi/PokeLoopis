@@ -104,16 +104,16 @@ sendButton.addEventListener("click", () => {
     handleStart();
     return;
   }
-
+  
   /// Caso o usuário esteja enviando um palpite:
-
+  
   const userReponse = document.querySelector("#text-poke").value;
-
+  
   // ações em comum
   elPokeImage.style.transition = "var(--transition-default)";
   elPokeImage.style.filter = "brightness(100%)";
   elInput.disabled = true;
-
+  
   // caso o usuário tenha acertado o palpite
   if (userReponse.toLowerCase() === pokemonName) {
     applyHitEnvironment();
@@ -122,6 +122,7 @@ sendButton.addEventListener("click", () => {
     applyErrorEnvironment();
     countMaximumHits();
     setSumOfHits(0);
+    updateAlSkipButton(); 
   }
 
   elSkipButton.disabled = true;
@@ -142,6 +143,12 @@ sendButton.addEventListener("click", () => {
       pokemonName[0].toUpperCase() + pokemonName.substring(1)
     }! Não foi dessa vez ;-;`;
   }
+
+  //Atualizando o button de skipar
+    function updateAlSkipButton(){
+      numberOfSkips = 3;
+      elSkipButton.textContent = `Pular | ${numberOfSkips}`;
+    }
 });
 
 elSkipButton.addEventListener("click", () => {
