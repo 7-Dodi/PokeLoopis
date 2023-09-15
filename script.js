@@ -1,4 +1,4 @@
-import { applyColorBackgroundTypes, getPokeTypeTranslation, typesPokemon } from "./pokemonTypes.js";
+import { applyColorBackgroundTypes, getPokeTypeTranslation } from "./pokemonTypes.js";
 
 const elBody = document.querySelector("body");
 const elPokeImage = document.querySelector(".pokemon-img-dark");
@@ -14,20 +14,31 @@ let pokemonName = "";
 let numberOfSkips = 3;
 
 let sumOfHits = 0;
-function countCurrentHits() {
-  sumOfHits++;
-  elHits.textContent = `Acertos atuais: ${sumOfHits}`;
+// Atualiza o valor da soma de acertos na mensagem
+const updateSumOfHitsElement = () => elHits.textContent = `Acertos atuais: ${sumOfHits}`;
+
+function initializeSumOfHits() {
+  sumOfHits = JSON.parse(localStorage.getItem("currentHits") || "0");
+  updateSumOfHitsElement();
+}
+function setSumOfHits(sumOfHits_) {
+  sumOfHits = sumOfHits_;
+  updateSumOfHitsElement();
+  localStorage.setItem("currentHits", JSON.stringify(sumOfHits));
 }
 
 let recordOfHits = 0;
+// Atualiza o valor do recorde na mensagem
+const updateRecordOfHitsElement = () => elRecord.textContent = `🔥 Recordes de acertos: ${recordOfHits}`;
+
+function initializeRecordOfHits() {
+  recordOfHits = JSON.parse(localStorage.getItem("record") || "0");
+  updateRecordOfHitsElement();
+}
 function countMaximumHits() {
-  //Atualiza primeiro localStorage
-  localStorage.setItem("record", Math.max(recordOfHits, sumOfHits));
-  //Atualiza o valor do records na mensagem
-  recordOfHits = localStorage.getItem("record");
-  elRecord.textContent = `🔥 Recordes de acertos: ${localStorage.getItem(
-    "record"
-  )}`;
+  recordOfHits = Math.max(recordOfHits, sumOfHits);
+  updateRecordOfHitsElement();
+  localStorage.setItem("record", JSON.stringify(recordOfHits));
 }
 /////
 
@@ -36,6 +47,8 @@ handleStart();
 
 async function handleStart() {
   resetFields();
+  initializeSumOfHits();
+  initializeRecordOfHits();
 
   const { image, name, types } = await getPokeData();
   pokemonName = name;
@@ -57,9 +70,6 @@ async function handleStart() {
     elPokeImage.style.filter = "brightness(0)";
     elInput.disabled = false;
     elInput.value = "";
-    elRecord.textContent = ` 🔥 Recordes de acertos: ${
-      localStorage.getItem("record") || 0
-    }`;
   
     // Só ativa o botão de skipar se o número de skips for > 0
     if(numberOfSkips > 0) {
@@ -107,12 +117,11 @@ sendButton.addEventListener("click", () => {
   // caso o usuário tenha acertado o palpite
   if (userReponse.toLowerCase() === pokemonName) {
     applyHitEnvironment();
-    countCurrentHits();
+    setSumOfHits(sumOfHits + 1);
   } else { // caso o usuário não tenha acertado o palpite
     applyErrorEnvironment();
     countMaximumHits();
-    sumOfHits = 0;
-    elHits.textContent = "Acertos atuais: 0";
+    setSumOfHits(0);
   }
 
   elSkipButton.disabled = true;
