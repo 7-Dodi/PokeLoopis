@@ -1,4 +1,4 @@
-/*Variáveis de cores*/
+/*Variáveis*/
 :root {
   --red: #eb3b5a;
   --light-red: #fc5c65;
@@ -21,6 +21,8 @@
   --ice: #3dc1d3;
   --fly: #00b894;
   --dark:#2d3436;
+
+  --transition-default: .7s;
 }
 
 * {
@@ -33,6 +35,7 @@
 body {
   background: var(--black);
   font-family: sans-serif;
+  transition: var(--transition-default);
 }
 
 .container {
@@ -77,15 +80,14 @@ body {
   height: 15rem;
   width: 15rem;
   margin-top: 7rem;
-  background-color: var(--blue);
   border-radius: 50%;
   border: 1.2rem solid #fff;
+  transition: var(--transition-default);
 } 
 
 .circle-poke .pokemon-img-dark {
   width: 100%;
   filter: brightness(0);
-  transition: filter .5s ease-out;
 }
 
 /*Dica do personagem*/
@@ -94,6 +96,8 @@ body {
   background-color: var(--blue);
   border-radius: 5rem;
   padding: 3px 2rem;
+  transition: var(--transition-default);
+  border: 2.4px solid #fff;
 
   display: flex;
   align-items: center;
@@ -141,7 +145,7 @@ body {
 }
 
 #skip-button {
-  background-color: var(--green);
+  background-color: var(--orange);
   border: none;
   cursor: pointer;
   border-radius: 0.8rem 0 0 0.8rem;
@@ -153,16 +157,9 @@ body {
   display: inline;
 }
 
-.inputs #restart-game{
-  background-color: var(--purple);
-  border: none;
-  cursor: pointer;
-  border-radius: 0 0.8rem 0.8rem 0;
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.05rem;
-  padding: 10px 1.5rem;
-  display: none;
+#skip-button:disabled {
+  opacity: .7;
+  cursor: not-allowed;
 }
 
 @media (max-width: 570px) {
