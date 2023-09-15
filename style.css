@@ -105,6 +105,12 @@ body {
   color: #fff;
 }
 
+.data-input{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /*Div dos inputs*/
 .inputs {
   margin: 2rem 0;
@@ -114,7 +120,7 @@ body {
 .inputs #text-poke {
   width: 25rem;
   border: none;
-  border-radius: 0.8rem 0 0 0.8rem;
+  border-radius: 0 0 0 0;
   padding: 10px;
   color: #222;
   outline: none;
@@ -122,7 +128,7 @@ body {
 }
 
 /*Button*/
-.inputs #button-poke, #skip-button {
+.inputs #button-poke {
   background-color: var(--blue);
   border: none;
   cursor: pointer;
@@ -134,9 +140,17 @@ body {
   display: inline;
 }
 
-.inputs #skip-button {
-  border-radius: 0.8rem;
+#skip-button {
   background-color: var(--green);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.8rem 0 0 0.8rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.05rem;
+  padding: 10px 1.5rem;
+  margin-right: 0.3rem;
+  display: inline;
 }
 
 .inputs #restart-game{
@@ -152,19 +166,23 @@ body {
 }
 
 @media (max-width: 570px) {
-  .inputs {
+  .data-input, .inputs {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .inputs #text-poke, .inputs #button-poke {
+  .inputs #text-poke, .inputs #button-poke, #skip-button {
     border-radius: 0.5rem;
     width: 90%;
   }
 
   .inputs #button-poke {
     margin-top: 1rem;
+  }
+
+  #skip-button{
+    margin-bottom: -1rem;
   }
 }
