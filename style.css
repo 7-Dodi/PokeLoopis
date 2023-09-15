@@ -122,7 +122,7 @@ body {
 }
 
 /*Button*/
-.inputs #button-poke {
+.inputs #button-poke, #skip-button {
   background-color: var(--blue);
   border: none;
   cursor: pointer;
@@ -132,6 +132,11 @@ body {
   font-size: 1.05rem;
   padding: 10px 1.5rem;
   display: inline;
+}
+
+.inputs #skip-button {
+  border-radius: 0.8rem;
+  background-color: var(--green);
 }
 
 .inputs #restart-game{
