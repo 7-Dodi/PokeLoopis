@@ -127,6 +127,11 @@ function colorBackgroundTypes(name){
 
 handleStart();
 
+function  getPokeNameTraduction (typeName) {
+  const typeTranslation = typesPokemon.find(({name}) => name === typeName);
+  return typeTranslation.tradution;
+}
+
 async function handleStart() {
   resetFields();
 
@@ -135,7 +140,7 @@ async function handleStart() {
   elPokeImage.src = image;
   let typescontent = 'Tipo: ';
   //Seria legal se os nomes do tipos fossem apresentados em português
-  types.forEach(({type}) => typescontent += ` ${type.name}`);
+  types.forEach(({type}) => typescontent += ` ${getPokeNameTraduction(type.name)}`);
   pokeTypes.innerText = typescontent;
   colorBackgroundTypes(types[0].type.name);
 }
@@ -208,6 +213,4 @@ sendButton.addEventListener("click", () => {
     elHits.textContent = "Acertos atuais: 0";
   }
 });
-
-
 
