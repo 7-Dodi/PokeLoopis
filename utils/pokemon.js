@@ -1,3 +1,5 @@
+import { applyDefaultEnvironment } from "./environments.js";
+
 //Objeto como a lista de tipos, tradução e a cor correspondente
 const typesPokemon = [
   {
@@ -94,6 +96,61 @@ const typesPokemon = [
 
 const elTipPoke = document.querySelector(".tip-poke");
 const elCirclePoke = document.querySelector(".circle-poke");
+const pokeTypes = document.querySelector(".tip-poke > h4");
+const elPokeImage = document.querySelector(".pokemon-img-dark");
+
+let pokemonData = {};
+
+function getPokemon() {
+  return pokemonData;
+}
+
+function getPokemonName() {
+  return pokemonData.name;
+}
+
+async function initializePokemon() {
+  const pokeDataLS = localStorage.getItem("pokemon");
+
+  // caso existam dados salvos em cache
+  if(pokeDataLS) {
+    pokemonData = JSON.parse(pokeDataLS);
+  } else { // caso não existam dados salvos em cache
+    await randomizePokemon();
+  }
+}
+
+async function randomizePokemon() {
+  applyDefaultEnvironment();
+
+  const pokemonData_ = await getPokeData();
+  const { image, types } = pokemonData_;
+  pokemonData = pokemonData_;
+  
+  elPokeImage.src = image;
+  let typescontent = "Tipo: ";
+  // Obs.: Seria legal se o nome dos tipos fossem apresentados em português
+  types.forEach(
+    ({ type }) => (typescontent += ` ${getPokeTypeTranslation(type.name)}`)
+  );
+  pokeTypes.innerText = typescontent;
+  applyColorBackgroundTypes(types[0].type.name);
+
+}
+
+async function getPokeData() {
+  // gera um número entre 1 e 500
+  const randomPokeId = (Math.floor(Math.random() * 100) % 500) + 1;
+  const pokeData = await fetch(
+    `https://pokeapi.co/api/v2/pokemon/${randomPokeId}`
+  ).then((res) => res.json());
+
+  return {
+    image: pokeData.sprites.front_default,
+    name: pokeData.name,
+    types: pokeData.types,
+  };
+}
 
 // Pega a tradução do nome do respectivo tipo
 function getPokeTypeTranslation(typeName) {
@@ -111,4 +168,4 @@ function applyColorBackgroundTypes(name) {
   });
 }
 
-export { typesPokemon, getPokeTypeTranslation, applyColorBackgroundTypes };
+export { typesPokemon, getPokemon, getPokemonName, initializePokemon, randomizePokemon, getPokeTypeTranslation, applyColorBackgroundTypes };
