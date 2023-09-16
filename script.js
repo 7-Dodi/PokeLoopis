@@ -1,5 +1,4 @@
 import {
-  applyDefaultEnvironment,
   applyErrorEnvironment,
   applyHitEnvironment,
   setReloadDesignPage,
@@ -28,6 +27,7 @@ const elSubmitButton = document.querySelector("#button-poke");
 const elSkipButton = document.querySelector("#skip-button");
 const elAudio = document.querySelector("audio");
 const elAudioControl = document.querySelector(".audio-control");
+const elForm = document.querySelector("form");
 
 handleStart();
 async function handleStart() {
@@ -40,13 +40,11 @@ async function handleStart() {
 
 /** EventListeners --------------------------- */
 
-const form = document.querySelector("form");
-form.addEventListener("submit", (e) => {
+elForm.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
-const sendButton = document.querySelector("#button-poke");
-sendButton.addEventListener("click", () => {
+elSubmitButton.addEventListener("click", () => {
   /// Caso o usuário queira continuar jogando
   if (elSubmitButton.textContent !== "Enviar") {
     // randomize o pokemon
