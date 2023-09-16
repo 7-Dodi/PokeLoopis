@@ -115,6 +115,7 @@ async function initializePokemon() {
   // caso existam dados salvos em cache
   if(pokeDataLS) {
     pokemonData = JSON.parse(pokeDataLS);
+    initializeAttributes(pokemonData.image, pokemonData.types);
   } else { // caso não existam dados salvos em cache
     await randomizePokemon();
   }
@@ -124,9 +125,15 @@ async function randomizePokemon() {
   applyDefaultEnvironment();
 
   const pokemonData_ = await getPokeData();
+  localStorage.setItem("pokemon", JSON.stringify(pokemonData_)); //Enviando os dados do pokemon para o localStorage
   const { image, types } = pokemonData_;
   pokemonData = pokemonData_;
   
+  initializeAttributes(image, types);
+}
+
+//Função para inicializar a imagem e o tipo do pokemon
+function initializeAttributes(image, types){
   elPokeImage.src = image;
   let typescontent = "Tipo: ";
   // Obs.: Seria legal se o nome dos tipos fossem apresentados em português
@@ -135,7 +142,6 @@ async function randomizePokemon() {
   );
   pokeTypes.innerText = typescontent;
   applyColorBackgroundTypes(types[0].type.name);
-
 }
 
 async function getPokeData() {
@@ -144,7 +150,6 @@ async function getPokeData() {
   const pokeData = await fetch(
     `https://pokeapi.co/api/v2/pokemon/${randomPokeId}`
   ).then((res) => res.json());
-
   return {
     image: pokeData.sprites.front_default,
     name: pokeData.name,

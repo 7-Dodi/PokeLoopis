@@ -2,6 +2,7 @@ import {
   applyDefaultEnvironment,
   applyErrorEnvironment,
   applyHitEnvironment,
+  setReloadDesignPage,
 } from "./utils/environments.js";
 import {
   getPokemonName,
@@ -30,14 +31,11 @@ const elSkipButton = document.querySelector("#skip-button");
 
 handleStart();
 async function handleStart() {
+  await initializePokemon();
+  setReloadDesignPage(); //Função de reload da página
   initializeNumberOfSkips();
   initializeSumOfHits();
   initializeRecordOfHits();
-
-  applyDefaultEnvironment();
-
-  // deixando a inicialização do pokemon por último propositalmente, pois pode demorar mais
-  await initializePokemon();
 }
 
 /** EventListeners --------------------------- */
@@ -80,7 +78,7 @@ elSkipButton.addEventListener("click", () => {
   const numberOfSkips = getNumberOfSkips();
 
   if (numberOfSkips > 0) {
-    handleStart();
+    randomizePokemon();  //Randomize o pokemon
     setNumberOfSkips(numberOfSkips - 1);
   }
 });

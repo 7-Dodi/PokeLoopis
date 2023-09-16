@@ -6,9 +6,16 @@ const elPokeImage = document.querySelector(".pokemon-img-dark");
 const elInput = document.querySelector("#text-poke");
 const elSubmitButton = document.querySelector("#button-poke");
 const elSkipButton = document.querySelector("#skip-button");
+let stateOfPage = '';
 
 const capitalizeFLetter = (p) => p[0].toUpperCase() + p.slice(1);
 const elHits = document.querySelector(".current-hits");
+
+//Função para settar o stado da página
+function setResultLocalStorage (newState){
+  localStorage.setItem("statePage", JSON.stringify(newState));
+  return true;
+}
 
 function applyDefaultEnvironment() {
   elBody.style.backgroundColor = "var(--black)";
@@ -18,8 +25,10 @@ function applyDefaultEnvironment() {
   elPokeImage.style.filter = "brightness(0)";
   elInput.disabled = false;
   elInput.value = "";
+  stateOfPage = "Default"; //Setando o valor da variável
   
   const numberOfSkips = getNumberOfSkips();
+  setResultLocalStorage(stateOfPage);
 
   // Só ativa o botão de skipar se o número de skips for > 0
   if (numberOfSkips > 0) {
@@ -38,6 +47,8 @@ function applyHitEnvironment() {
   defaultSettings();
   elBody.style.backgroundColor = "var(--green)";
   elSubmitButton.textContent = "Próximo";
+  stateOfPage = "Hit";
+  setResultLocalStorage(stateOfPage);
   
   const pokemonName = getPokemonName();
   elInput.value = `${capitalizeFLetter(
@@ -49,8 +60,26 @@ function applyErrorEnvironment() {
   defaultSettings();
   elBody.style.backgroundColor = "var(--light-red)";
   elSubmitButton.textContent = "Reiniciar";
+  stateOfPage = "Error";
+  setResultLocalStorage(stateOfPage);
+
   const pokemonName = getPokemonName();
   elInput.value = `${capitalizeFLetter(pokemonName)}! Não foi dessa vez ;-;`;
 }
 
-export { applyDefaultEnvironment, applyHitEnvironment, applyErrorEnvironment };
+//Função para modificar o design da página
+function setReloadDesignPage(){
+  const statePage = JSON.parse(localStorage.getItem("statePage"));
+
+  if(statePage === "Default"){
+    applyDefaultEnvironment();
+  }
+  else if(statePage === "Hit"){
+    applyHitEnvironment();
+  }
+  else if(statePage == "Error"){
+    applyErrorEnvironment();
+  }
+}
+
+export { applyDefaultEnvironment, applyHitEnvironment, applyErrorEnvironment, setReloadDesignPage };
