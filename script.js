@@ -60,11 +60,6 @@ sendButton.addEventListener("click", () => {
 
   const userReponse = document.querySelector("#text-poke").value;
 
-  // ações em comum
-  elPokeImage.style.transition = "var(--transition-default)";
-  elPokeImage.style.filter = "brightness(100%)";
-  elInput.disabled = true;
-
   const pokemonName = getPokemonName();
   // caso o usuário tenha acertado o palpite
   if (userReponse.toLowerCase() === pokemonName) {
@@ -79,8 +74,6 @@ sendButton.addEventListener("click", () => {
     // reiniciando o número de skips disponíveis
     setNumberOfSkips(3);
   }
-
-  elSkipButton.disabled = true;
 });
 
 elSkipButton.addEventListener("click", () => {

@@ -27,19 +27,29 @@ function applyDefaultEnvironment() {
   }
 }
 
+function defaultSettings() {
+  elPokeImage.style.transition = "var(--transition-default)";
+  elPokeImage.style.filter = "brightness(100%)";
+  elInput.disabled = true;
+  elSkipButton.disabled = true;
+}
+
 function applyHitEnvironment() {
-  const pokemonName = getPokemonName();
+  defaultSettings();
   elBody.style.backgroundColor = "var(--green)";
   elSubmitButton.textContent = "Próximo";
+  
+  const pokemonName = getPokemonName();
   elInput.value = `${capitalizeFLetter(
     pokemonName
   )}!! Você acertou, Parabéns!!`;
 }
 
 function applyErrorEnvironment() {
-  const pokemonName = getPokemonName();
+  defaultSettings();
   elBody.style.backgroundColor = "var(--light-red)";
   elSubmitButton.textContent = "Reiniciar";
+  const pokemonName = getPokemonName();
   elInput.value = `${capitalizeFLetter(pokemonName)}! Não foi dessa vez ;-;`;
 }
 
