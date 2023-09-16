@@ -1,37 +1,49 @@
 <!DOCTYPE html>
-<html lang="pt-br"> 
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
     <title>PokeLoopis</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <audio loop>
+      <source src="/assets/Pokémon - Abertura (Karaokê) - Áudio Oficial (Abertura PT-BR) [TubeRipper.com].mp3" />
+    </audio>
+    
     <div class="navigator">
-        <div>
-            <h1 class="current-hits">Acertos atuais: 0</h1>
-            <p class="record-hits">🔥 Recordes de acertos: 0</p>
-        </div>
+      <div>
+        <h1 class="current-hits">Acertos atuais: 0</h1>
+        <p class="record-hits">🔥 Recordes de acertos: 0</p>
+      </div>
+      <button class="audio-control"><i class="fas fa-play"></i></button>
     </div>
 
     <div class="container">
       <div class="poke">
         <div class="circle-poke">
-            <img class="pokemon-img-dark" src="" alt="">
+          <img class="pokemon-img-dark" src="" alt="" />
         </div>
         <div class="tip-poke">
-          <h4>Tipo: Água</h4>
+          <h4></h4>
         </div>
       </div>
-      <form class="inputs">
-        <input id="text-poke" type="text">
-        <button id="button-poke">Enviar</button>
-      </form>
+      <div class="data-input">
+        <button id="skip-button">Pular | 3</button>
+        <form class="inputs">
+          <input id="text-poke" type="text" />
+          <button id="button-poke">Enviar</button>
+        </form>
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js" type="module" defer></script>
+    <script src="https://kit.fontawesome.com/117d0d6c95.js" crossorigin="anonymous"></script>
   </body>
 </html>

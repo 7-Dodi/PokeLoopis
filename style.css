@@ -1,4 +1,4 @@
-/*Variáveis de cores*/
+/*Variáveis*/
 :root {
   --red: #eb3b5a;
   --light-red: #fc5c65;
@@ -10,6 +10,19 @@
   --white: #d1d8e0;
   --grey: #4b6584;
   --black: #303030;
+  --brow: #6c3c0c;
+  --magenta: #6D214F;
+  --honey: #EAB543;
+  --naval: #40739e;
+  --rock: #353b48;
+  --steel: #718093;
+  --kepel: #58B19F;
+  --fairy: #cf6a87;
+  --ice: #3dc1d3;
+  --fly: #00b894;
+  --dark: #2d3436;
+
+  --transition-default: .7s;
 }
 
 * {
@@ -22,6 +35,7 @@
 body {
   background: var(--black);
   font-family: sans-serif;
+  transition: var(--transition-default);
 }
 
 .container {
@@ -37,6 +51,8 @@ body {
 .navigator {
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-left: 5.1rem;
 }
 
 .navigator div {
@@ -45,12 +61,23 @@ body {
   padding: 1rem;
   margin-top: 1erm;
   border-radius: 0 0 1rem 1rem;
-  box-shadow: 2px 2px 10px #222;
+  box-shadow: 0px 0px 10px #222;
   font-weight: bold;
 }
 
 .navigator .record-hits {
   color: #fd9644;
+}
+
+.navigator .audio-control {
+  border: none;
+  font-size: 1.5rem;
+  padding: .9rem 1.3rem;
+  margin-left: 1rem;
+  border-radius: 5rem;
+  cursor: pointer;
+  background-color: var(--blue);
+  color: #fff;
 }
 
 /*Div do círculo e da dica*/
@@ -66,15 +93,14 @@ body {
   height: 15rem;
   width: 15rem;
   margin-top: 7rem;
-  background-color: var(--blue);
   border-radius: 50%;
   border: 1.2rem solid #fff;
+  transition: var(--transition-default);
 }
 
 .circle-poke .pokemon-img-dark {
   width: 100%;
   filter: brightness(0);
-  transition: filter .5s ease-out;
 }
 
 /*Dica do personagem*/
@@ -83,6 +109,8 @@ body {
   background-color: var(--blue);
   border-radius: 5rem;
   padding: 3px 2rem;
+  transition: var(--transition-default);
+  border: 2.4px solid #fff;
 
   display: flex;
   align-items: center;
@@ -94,6 +122,12 @@ body {
   color: #fff;
 }
 
+.data-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /*Div dos inputs*/
 .inputs {
   margin: 2rem 0;
@@ -103,7 +137,7 @@ body {
 .inputs #text-poke {
   width: 25rem;
   border: none;
-  border-radius: 0.8rem 0 0 0.8rem;
+  border-radius: 0 0 0 0;
   padding: 10px;
   color: #222;
   outline: none;
@@ -123,19 +157,27 @@ body {
   display: inline;
 }
 
-.inputs #restart-game{
-  background-color: var(--purple);
+#skip-button {
+  background-color: var(--orange);
   border: none;
   cursor: pointer;
-  border-radius: 0 0.8rem 0.8rem 0;
+  border-radius: 0.8rem 0 0 0.8rem;
   color: #fff;
   font-weight: bold;
   font-size: 1.05rem;
   padding: 10px 1.5rem;
-  display: none;
+  margin-right: 0.3rem;
+  display: inline;
+}
+
+#skip-button:disabled {
+  opacity: .7;
+  cursor: not-allowed;
 }
 
 @media (max-width: 570px) {
+
+  .data-input,
   .inputs {
     width: 100%;
     display: flex;
@@ -143,12 +185,18 @@ body {
     align-items: center;
   }
 
-  .inputs #text-poke, .inputs #button-poke {
+  .inputs #text-poke,
+  .inputs #button-poke,
+  #skip-button {
     border-radius: 0.5rem;
     width: 90%;
   }
 
   .inputs #button-poke {
     margin-top: 1rem;
+  }
+
+  #skip-button {
+    margin-bottom: -1rem;
   }
 }
