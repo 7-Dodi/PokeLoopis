@@ -9,24 +9,24 @@ import {
   randomizePokemon,
 } from "./utils/pokemon.js";
 import {
-  countMaximumHits,
-  initializeRecordOfHits,
-} from "./variables/recordOfHits.js";
-import {
   getNumberOfSkips,
   initializeNumberOfSkips,
   setNumberOfSkips,
 } from "./variables/numberOfSkips.js";
+import {
+  countMaximumHits,
+  initializeRecordOfHits,
+} from "./variables/recordOfHits.js";
 import {
   increaseSumOfHits,
   initializeSumOfHits,
   setSumOfHits,
 } from "./variables/sumOfHits.js";
 
-const elPokeImage = document.querySelector(".pokemon-img-dark");
-const elInput = document.querySelector("#text-poke");
 const elSubmitButton = document.querySelector("#button-poke");
 const elSkipButton = document.querySelector("#skip-button");
+const elAudio = document.querySelector("audio");
+const elAudioControl = document.querySelector(".audio-control");
 
 handleStart();
 async function handleStart() {
@@ -82,5 +82,15 @@ elSkipButton.addEventListener("click", () => {
   if (numberOfSkips > 0) {
     handleStart();
     setNumberOfSkips(numberOfSkips - 1);
+  }
+});
+
+elAudioControl.addEventListener("click", () =>  {
+  if(elAudio.paused) {
+    elAudioControl.innerHTML = `<i class="fas fa-pause"></i>`;
+    elAudio.play();
+  } else {
+    elAudioControl.innerHTML = `<i class="fas fa-play"></i>`;
+    elAudio.pause();
   }
 });

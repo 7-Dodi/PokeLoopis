@@ -1,6 +1,6 @@
 import { applyDefaultEnvironment } from "./environments.js";
 
-//Objeto como a lista de tipos, tradução e a cor correspondente
+// Objeto como a lista de tipos, tradução e a cor correspondente
 const typesPokemon = [
   {
     name: "fire",
@@ -113,9 +113,10 @@ async function initializePokemon() {
   const pokeDataLS = localStorage.getItem("pokemon");
 
   // caso existam dados salvos em cache
-  if(pokeDataLS) {
+  if (pokeDataLS) {
     pokemonData = JSON.parse(pokeDataLS);
-  } else { // caso não existam dados salvos em cache
+  } else {
+    // caso não existam dados salvos em cache
     await randomizePokemon();
   }
 }
@@ -126,7 +127,7 @@ async function randomizePokemon() {
   const pokemonData_ = await getPokeData();
   const { image, types } = pokemonData_;
   pokemonData = pokemonData_;
-  
+
   elPokeImage.src = image;
   let typescontent = "Tipo: ";
   // Obs.: Seria legal se o nome dos tipos fossem apresentados em português
@@ -135,7 +136,6 @@ async function randomizePokemon() {
   );
   pokeTypes.innerText = typescontent;
   applyColorBackgroundTypes(types[0].type.name);
-
 }
 
 async function getPokeData() {
@@ -156,7 +156,7 @@ async function getPokeData() {
 function getPokeTypeTranslation(typeName) {
   const typeTranslation = typesPokemon.find(({ name }) => name === typeName);
   return typeTranslation.tradution;
-};
+}
 
 // Função para mudar a cor do circulo e da dica
 function applyColorBackgroundTypes(name) {
@@ -168,4 +168,12 @@ function applyColorBackgroundTypes(name) {
   });
 }
 
-export { typesPokemon, getPokemon, getPokemonName, initializePokemon, randomizePokemon, getPokeTypeTranslation, applyColorBackgroundTypes };
+export {
+  typesPokemon,
+  getPokemon,
+  getPokemonName,
+  initializePokemon,
+  randomizePokemon,
+  getPokeTypeTranslation,
+  applyColorBackgroundTypes,
+};
