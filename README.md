@@ -48,7 +48,7 @@ Bem-vindo ao Pokémon Guessing Game! Este é um emocionante projeto de aplicaç�
   - A aplicação oferece a opção de reproduzir a música temática do desenho Pokémon.
   - Os jogadores podem escolher se desejam ou não ouvir a música enquanto jogam.
 
-## 🤝 Contribution
+## 🤝 Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e enviar pull requests.
 
