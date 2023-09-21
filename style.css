@@ -21,6 +21,7 @@
   --ice: #3dc1d3;
   --fly: #00b894;
   --dark: #2d3436;
+  --pokeLogo: #FFCA04;
 
   --transition-default: .7s;
 }
@@ -53,9 +54,37 @@ body {
   width: 40em;
   height: 25em;
 
-  background-color: #00b894;
+  background-color: var(--pokeLogo);
   position: absolute;
   z-index: 1;
+
+  border-radius: 2em;
+  box-shadow: 2px 2px 2px #222 ;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.div-img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -23em;
+  z-index: 1;
+}
+
+#logo{
+  width: 95%;
+  align-self: flex-start;
+}
+
+#btn-start{
+  width: 7em;
+  height: 3em;
+  border-radius: 1em;
+  border: 0.5em solid #40739e;
 }
 
 .container {

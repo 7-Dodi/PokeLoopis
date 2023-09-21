@@ -6,6 +6,8 @@ const elPokeImage = document.querySelector(".pokemon-img-dark");
 const elInput = document.querySelector("#text-poke");
 const elSubmitButton = document.querySelector("#button-poke");
 const elSkipButton = document.querySelector("#skip-button");
+const elBtnStart = document.querySelector("#btn-start");
+const screen = document.querySelector(".screen");
 let stateOfPage = "";
 
 const capitalizeFLetter = (p) => p[0].toUpperCase() + p.slice(1);
@@ -79,6 +81,11 @@ function setReloadDesignPage() {
     applyErrorEnvironment();
   }
 }
+
+// AddEventeListenner para ativar a jogo
+elBtnStart.addEventListener("click", ()=>{
+  screen.style.display = "none";
+});
 
 export {
   applyDefaultEnvironment,
