@@ -19,6 +19,12 @@ function setResultLocalStorage(newState) {
   return true;
 }
 
+function setVisibleMenu(valeu){
+  if(valeu === 'none' || valeu === 'flex'){
+    screen.style.display = valeu;
+  }
+}
+
 function applyDefaultEnvironment() {
   elBody.style.backgroundColor = "var(--black)";
   elSubmitButton.textContent = "Enviar";
@@ -84,7 +90,7 @@ function setReloadDesignPage() {
 
 // AddEventeListenner para ativar a jogo
 elBtnStart.addEventListener("click", ()=>{
-  screen.style.display = "none";
+  setVisibleMenu("none");
 });
 
 export {
@@ -92,4 +98,5 @@ export {
   applyHitEnvironment,
   applyErrorEnvironment,
   setReloadDesignPage,
+  setVisibleMenu,
 };

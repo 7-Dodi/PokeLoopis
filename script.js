@@ -2,6 +2,7 @@ import {
   applyErrorEnvironment,
   applyHitEnvironment,
   setReloadDesignPage,
+  setVisibleMenu,
 } from "./utils/environments.js";
 import {
   getPokemonName,
@@ -47,6 +48,11 @@ elForm.addEventListener("submit", (e) => {
 elSubmitButton.addEventListener("click", () => {
   /// Caso o usuário queira continuar jogando
   if (elSubmitButton.textContent !== "Enviar") {
+    //Caso o button seja de reiniciar
+    if(elSubmitButton.textContent === "Reiniciar"){
+      setVisibleMenu("flex");
+    }
+    
     // randomize o pokemon
     randomizePokemon();
     return;
@@ -66,7 +72,7 @@ elSubmitButton.addEventListener("click", () => {
     applyErrorEnvironment();
     countMaximumHits();
     setSumOfHits(0);
-
+    
     // reiniciando o número de skips disponíveis
     setNumberOfSkips(3);
   }
