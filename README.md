@@ -4,6 +4,9 @@ Bem-vindo ao Pokémon Guessing Game! Este é um emocionante projeto de aplicaç�
 
 ## 📷 Screenshots
 
+### Tela inicial ✨
+
+![Home Screen](screenshots/home-screen.png)
 ### Aguardando Resposta do Usuário 🤔
 
 ![Waiting Reponse](screenshots/espera-resposta.png)
