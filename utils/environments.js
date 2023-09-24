@@ -6,6 +6,8 @@ const elPokeImage = document.querySelector(".pokemon-img-dark");
 const elInput = document.querySelector("#text-poke");
 const elSubmitButton = document.querySelector("#button-poke");
 const elSkipButton = document.querySelector("#skip-button");
+const elBtnStart = document.querySelector("#btn-start");
+const screen = document.querySelector(".screen");
 let stateOfPage = "";
 
 const capitalizeFLetter = (p) => p[0].toUpperCase() + p.slice(1);
@@ -15,6 +17,12 @@ const elHits = document.querySelector(".current-hits");
 function setResultLocalStorage(newState) {
   localStorage.setItem("statePage", JSON.stringify(newState));
   return true;
+}
+
+function setVisibleMenu(valeu){
+  if(valeu === 'none' || valeu === 'flex'){
+    screen.style.display = valeu;
+  }
 }
 
 function applyDefaultEnvironment() {
@@ -80,9 +88,15 @@ function setReloadDesignPage() {
   }
 }
 
+// AddEventeListenner para ativar a jogo
+elBtnStart.addEventListener("click", ()=>{
+  setVisibleMenu("none");
+});
+
 export {
   applyDefaultEnvironment,
   applyHitEnvironment,
   applyErrorEnvironment,
   setReloadDesignPage,
+  setVisibleMenu,
 };
